@@ -1,0 +1,44 @@
+# Dependencies and generated files
+node_modules/
+coverage/
+dist/
+output/
+audits/
+.DS_Store
+
+# Credentials and local service state
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+.wrangler/
+.npmrc
+*.pem
+*.key
+publisher-credential*
+
+# Private tournament data and exports
+/tlab/
+/swissmanager-tournament-files/
+/tests/fixtures/
+*.tlab
+*.TUNx
+*.TURx
+*.TUTx
+*.TUMx
+*.tunx
+*.turx
+*.tutx
+*.tumx
+*.bak
+*.bak.*
+workspace.json
+
+# Local agent and browser artifacts
+.gsd/
+.impeccable/
+.impeccable-live/
+.playwright-cli/
+.playwright-mcp/

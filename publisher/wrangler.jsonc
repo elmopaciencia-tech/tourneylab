@@ -1,0 +1,75 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tourneylab-publisher",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-07-11",
+  "compatibility_flags": ["nodejs_compat"],
+  "triggers": { "crons": ["17 3 * * *"] },
+  "vars": {
+    "ENVIRONMENT": "test",
+    "PUBLIC_RESULTS_BASE": "https://results.tourneylab.app",
+    "PUBLISH_BASE": "https://publish.tourneylab.app",
+    "SELF_SERVICE_ENABLED": "false",
+    "STRIPE_EVENT_PASS_PRICE_ID": "price_event_pass_test",
+    "STRIPE_PRO_PRICE_ID": "price_pro_test",
+    "STRIPE_EVENT_PASS_AMOUNT": "600",
+    "STRIPE_PRO_AMOUNT": "5900",
+    "GOOGLE_CLIENT_ID": "google-client-id.test"
+  },
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "tourneylab-publisher-local",
+    "database_id": "00000000-0000-0000-0000-000000000000",
+    "migrations_dir": "migrations"
+  }],
+  "r2_buckets": [{
+    "binding": "REPORTS",
+    "bucket_name": "tourneylab-results-local"
+  }],
+  "env": {
+    "staging": {
+      "name": "tourneylab-publisher-staging",
+      "triggers": { "crons": ["17 3 * * *"] },
+      "vars": {
+        "ENVIRONMENT": "staging",
+        "PUBLIC_RESULTS_BASE": "https://staging-results.tourneylab.app",
+        "PUBLISH_BASE": "https://staging-publish.tourneylab.app",
+        "SELF_SERVICE_ENABLED": "false",
+        "STRIPE_EVENT_PASS_PRICE_ID": "price_replace_staging",
+        "STRIPE_PRO_PRICE_ID": "price_replace_staging",
+        "STRIPE_EVENT_PASS_AMOUNT": "600",
+        "STRIPE_PRO_AMOUNT": "5900",
+        "GOOGLE_CLIENT_ID": "replace-staging.apps.googleusercontent.com"
+      },
+      "d1_databases": [{
+        "binding": "DB",
+        "database_name": "tourneylab-publisher-staging",
+        "database_id": "REPLACE_STAGING_D1_ID",
+        "migrations_dir": "migrations"
+      }],
+      "r2_buckets": [{ "binding": "REPORTS", "bucket_name": "tourneylab-results-staging" }]
+    },
+    "production": {
+      "name": "tourneylab-publisher-production",
+      "triggers": { "crons": ["17 3 * * *"] },
+      "vars": {
+        "ENVIRONMENT": "production",
+        "PUBLIC_RESULTS_BASE": "https://results.tourneylab.app",
+        "PUBLISH_BASE": "https://publish.tourneylab.app",
+        "SELF_SERVICE_ENABLED": "false",
+        "STRIPE_EVENT_PASS_PRICE_ID": "price_replace_production",
+        "STRIPE_PRO_PRICE_ID": "price_replace_production",
+        "STRIPE_EVENT_PASS_AMOUNT": "600",
+        "STRIPE_PRO_AMOUNT": "5900",
+        "GOOGLE_CLIENT_ID": "replace-production.apps.googleusercontent.com"
+      },
+      "d1_databases": [{
+        "binding": "DB",
+        "database_name": "tourneylab-publisher-production",
+        "database_id": "REPLACE_PRODUCTION_D1_ID",
+        "migrations_dir": "migrations"
+      }],
+      "r2_buckets": [{ "binding": "REPORTS", "bucket_name": "tourneylab-results-production" }]
+    }
+  }
+}

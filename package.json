@@ -1,0 +1,28 @@
+{
+  "name": "tourneylab",
+  "productName": "TourneyLab",
+  "version": "0.1.0",
+  "description": "Chess tournament manager with a FIDE Dutch Swiss pairing engine (clean-room, MIT).",
+  "main": "main.cjs",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "test": "npm run test:desktop && npm run test:publisher",
+    "test:desktop": "node --test tests/*.test.mjs",
+    "test:publisher": "npm --prefix publisher test",
+    "typecheck:publisher": "npm --prefix publisher run typecheck"
+  },
+  "devDependencies": {
+    "electron": "^43.2.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "qrcode": "^1.5.4"
+  },
+  "overrides": {
+    "exceljs": {
+      "uuid": "11.1.1"
+    }
+  }
+}

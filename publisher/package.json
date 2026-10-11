@@ -1,0 +1,23 @@
+{
+  "name": "@tourneylab/publisher",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run --coverage",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "dev": "wrangler dev",
+    "deploy:staging": "wrangler deploy --env staging",
+    "deploy:production": "wrangler deploy --env production",
+    "migrate:staging": "wrangler d1 migrations apply tourneylab-publisher-staging --remote --env staging",
+    "migrate:production": "wrangler d1 migrations apply tourneylab-publisher-production --remote --env production"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.18.4",
+    "@cloudflare/workers-types": "^5.20260711.1",
+    "@vitest/coverage-istanbul": "^4.1.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.0",
+    "wrangler": "^4.110.0"
+  }
+}
